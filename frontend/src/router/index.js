@@ -29,6 +29,12 @@ Vue.use(VueRouter)
       meta: {layout : 'Dashboard', auth:true},
       component: () => import(/* webpackChunkName: "about" */ '../views/users.vue')
     },
+    {
+      path: '/jobs',
+      name: 'jobs',
+      meta: {layout : 'Dashboard', auth:true},
+      component: () => import(/* webpackChunkName: "about" */ '../views/jobs.vue')
+    },
 ]
 
 const router = new VueRouter({

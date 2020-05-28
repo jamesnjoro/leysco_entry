@@ -41,3 +41,13 @@ Route::group([
 ], function ($router) {
     Route::get('list','UserController@index');
 });
+
+Route::group([
+    'middleware' => 'jwt.verify',
+    'prefix' => 'jobs'
+], function ($router) {
+    Route::get('/','JobController@index');
+    Route::post('/add','JobController@create');
+    Route::post('/{id}','JobController@update');
+    Route::get('/delete/{id}','JobController@destroy');
+});
