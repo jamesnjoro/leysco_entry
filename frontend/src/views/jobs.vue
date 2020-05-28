@@ -45,6 +45,18 @@
                     </v-card>
                 </v-dialog>
             </v-toolbar>
+            <v-snackbar
+                    v-model="snackbar"
+            >
+                {{ text }}
+                <v-btn
+                        color="pink"
+                        text
+                        @click="snackbar = false"
+                >
+                    Close
+                </v-btn>
+            </v-snackbar>
         </template>
         <template v-slot:item.actions="{ item }">
             <v-icon
@@ -67,6 +79,8 @@
     export default {
         data(){
             return{
+                text:'',
+                snackbar:false,
                 error : false,
                 saveLoading:false,
                 errors: [],
@@ -133,6 +147,8 @@
                 .then(data => {
                     console.log(data)
                     this.getJobs()
+                    this.text = "Job " + item.name + " has been deleted"
+                    this.snackbar = true
                 })
             },
             addNew(){

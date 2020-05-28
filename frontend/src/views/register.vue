@@ -78,7 +78,7 @@
                 </v-form>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="primary">Login</v-btn>
+                <v-btn @click="login" color="primary">Login</v-btn>
                 <v-spacer></v-spacer>
                 <v-btn color="primary" @click="register" :loading="registerLoad" >Register</v-btn>
               </v-card-actions>
@@ -109,6 +109,9 @@
       }
     },
     methods:{
+      login(){
+        this.$router.push('/login')
+      },
       register() {
         this.registerLoad = true;
         this.errors = []
